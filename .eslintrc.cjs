@@ -12,7 +12,7 @@ module.exports = {
 		semi: ["error", "always"],
 		quotes: ["error", "double"],
 		"jsx-quotes": ["error", "prefer-double"],
-		indent: ["error", 4, { StaticBlock: { body: 4 } }],
+		indent: "off",
 		camelcase: [2, { properties: "always" }],
 		"comma-dangle": ["error", "always-multiline"],
 		"comma-spacing": ["error", { before: false, after: true }],
@@ -39,7 +39,7 @@ module.exports = {
 
 		// Reglas de Arrays
 		"array-bracket-spacing": [
-			"error",
+			"false",
 			"always",
 			{ singleValue: false, arraysInArrays: true, objectsInArrays: false },
 		],
