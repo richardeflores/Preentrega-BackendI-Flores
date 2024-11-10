@@ -360,6 +360,26 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Crear carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
