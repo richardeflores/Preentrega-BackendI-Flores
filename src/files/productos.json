@@ -1,0 +1,53 @@
+[
+	{
+		"id": 1,
+		"title": "Funda Protectora iPhone 13",
+		"description": "Funda de silicona de alta resistencia compatible con iPhone 13, disponible en varios colores.",
+		"code": "FPIP13",
+		"price": 12990,
+		"status": true,
+		"stock": 150,
+		"category": "Fundas"
+	},
+	{
+		"id": 2,
+		"title": "Cargador Inalámbrico Rápido",
+		"description": "Cargador inalámbrico con carga rápida de 15W, compatible con dispositivos Apple y Android.",
+		"code": "CIR15",
+		"price": 24990,
+		"status": true,
+		"stock": 85,
+		"category": "Cargadores"
+	},
+	{
+		"id": 3,
+		"title": "Cable USB-C a Lightning 1m",
+		"description": "Cable USB-C a Lightning de 1 metro, ideal para carga rápida y transferencia de datos.",
+		"code": "CL01",
+		"price": 7990,
+		"status": false,
+		"stock": 0,
+		"category": "Cables"
+	},
+	{
+		"id": 4,
+		"title": "prueba2",
+		"description": "descripcion de prueba2",
+		"code": "pba012",
+		"price": 9992,
+		"status": true,
+		"stock": 52,
+		"category": "inventado"
+	},
+	{
+		"id": 5,
+		"title": "prueba2",
+		"description": "descripcion de prueba2",
+		"code": "pba012",
+		"price": 9992,
+		"status": true,
+		"stock": 52,
+		"category": "inventado",
+		"thumbnail": "file_4894_10112024_003915.jpg"
+	}
+]
