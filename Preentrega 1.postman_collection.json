@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "93688fdb-9579-4881-bac8-3b11f29c8cf3",
+		"name": "Preentrega 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39620014"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Obtener all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedir producto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar productos pba",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "prueba2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "descripcion de prueba2",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "pba012",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "9992",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "52",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "inventado",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef9f149-76f9-47d0-945d-ab1daa9cd590"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "modificado1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "descripcion de prueba2",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "pba02",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "9992",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "52",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "inventado",
+									"type": "text"
+								},
+								{
+									"key": "thumbnail",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "modificado1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "descripcion de prueba2",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "pba02",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "9992",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "52",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "inventado",
+									"type": "text"
+								},
+								{
+									"key": "thumbnail",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Carrito all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carrito x id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cart/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar producto al carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\"cart\":[{\"product\": 2,\"quantity\": 9},{\"product\": 3,\"quantity\": 9}] }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cart/3/product/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								"3",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
