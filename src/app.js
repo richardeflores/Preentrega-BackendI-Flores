@@ -9,7 +9,7 @@ app.use("/api/public", express.static("./src/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/products", routerProducts);
-app.use("/api/cart", routerCart);
+app.use("/api/carts", routerCart);
 
 app.listen(PORT, () => {
 	console.log(`Ejecutándose en http://localhost:${PORT}`);
