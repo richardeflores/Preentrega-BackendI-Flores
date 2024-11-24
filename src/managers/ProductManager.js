@@ -74,7 +74,7 @@ export default class ProductManager {
 				status: convertToBoolean(status),
 				stock: Number(stock),
 				category,
-				thumbnail: file?.filename,
+				thumbnail: file?.filename || "Imagen no disponible",
 			};
 
 			this.#products.push(product);

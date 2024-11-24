@@ -41,13 +41,13 @@
 	},
 	{
 		"id": 5,
-		"title": "prueba2",
-		"description": "descripcion de prueba2",
-		"code": "pba012",
-		"price": 9992,
-		"status": true,
-		"stock": 52,
-		"category": "inventado",
-		"thumbnail": "file_4894_10112024_003915.jpg"
+		"title": "PRoducto formulario",
+		"description": "esta es una prueba",
+		"code": "360190",
+		"price": 25,
+		"status": false,
+		"stock": 4,
+		"category": "tecnologia",
+		"thumbnail": "Imagen no disponible"
 	}
 ]
