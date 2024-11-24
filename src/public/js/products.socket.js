@@ -8,14 +8,23 @@ const errorMessage = document.getElementById("error-message");
 
 socket.on("products-list", (data) => {
 	const products = data.products ?? [];
-	productsList.innerText = "";
+	productsList.innerHTML = ""; // Limpia la lista
 
 	products.forEach((product) => {
-		productsList.innerHTML += `<li>Id: ${product.id} - Nombre: ${product.title}</li>`;
+		const productItem = document.createElement("li");
+		productItem.innerHTML = `
+			Id: ${product.id} - Nombre: ${product.title}
+			${
+				product.thumbnail
+					? `<br><img src="${product.thumbnail}" alt="${product.title}" style="width:100px; height:auto;">`
+					: ""
+			}
+		`;
+		productsList.appendChild(productItem);
 	});
 });
 
-productsForm.onsubmit = (event) => {
+productsForm.onsubmit = async (event) => {
 	event.preventDefault();
 	const form = event.target;
 	const formData = new FormData(form);

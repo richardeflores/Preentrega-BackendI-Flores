@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Ruta para crear un producto, permite la subida de imágenes
-router.post("/", uploader.single("file"), async (req, res) => {
+router.post("/", uploader.single("thumbnail"), async (req, res) => {
 	try {
 		const product = await productManager.insertOne(req.body, req.file);
 		res.status(201).json({ status: "success", payload: product });
@@ -44,12 +44,12 @@ router.post("/", uploader.single("file"), async (req, res) => {
 // Ruta PUT
 router.put("/:id", uploader.single("file"), async (req, res) => {
 	try {
-		const ingredient = await productManager.updateOneById(
+		const product = await productManager.updateOneById(
 			req.params.id,
 			req.body,
 			req.file
 		);
-		res.status(200).json({ status: "success", payload: ingredient });
+		res.status(200).json({ status: "success", payload: product });
 	} catch (error) {
 		res
 			.status(error.code || 500)

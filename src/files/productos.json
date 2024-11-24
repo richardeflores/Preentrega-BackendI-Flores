@@ -31,23 +31,12 @@
 	},
 	{
 		"id": 4,
-		"title": "prueba2",
-		"description": "descripcion de prueba2",
-		"code": "pba012",
-		"price": 9992,
-		"status": true,
-		"stock": 52,
-		"category": "inventado"
-	},
-	{
-		"id": 5,
-		"title": "PRoducto formulario",
-		"description": "esta es una prueba",
-		"code": "360190",
+		"title": "sdf",
+		"description": "sdf",
+		"code": "sdf",
 		"price": 25,
-		"status": false,
-		"stock": 4,
-		"category": "tecnologia",
-		"thumbnail": "Imagen no disponible"
+		"status": true,
+		"stock": 11,
+		"category": "tecnologia"
 	}
 ]
