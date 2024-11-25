@@ -1,28 +1,34 @@
-<header>
+<header class="container">
 	<h1>INICIO - Productos en Tiempo Real</h1>
 </header>
 
-<main>
+<main class="container">
 	<section>
 		<h3>Productos</h3>
 		{{! Uso de nomenclatura BEM (B de bloque, E de elemento y M de modificador)}}
 		<div class="products">
 			<div class="products__list">
-				<ul class="products__list__item" id="products-list"></ul>
+				<div class="products__list__item" id="products-list"></div>
 			</div>
 		</div>
 	</section>
 
 	<section style="width: 100%">
 		<h3>Formulario de Productos</h3>
-		<form class="products__form" id="products-form">
-			<input type="text" name="title" placeholder="Nombre del producto" />
+		<form class="mb-3" id="products-form">
+			<div class="mb-3">			
+				<input type="text" name="title" placeholder="Nombre del producto" />
 			<input type="text" name="description" placeholder="Descripción" />
-			<input type="text" name="code" placeholder="Código" />
-			<input type="number" name="price" placeholder="Precio" />
+			</div>
+			<div class="mb-3">
+				<input type="text" name="code" placeholder="Código" />
+				<input type="number" name="price" placeholder="Precio" />
+			</div>
+			<div class="md-3">
+				<input type="number" name="stock" placeholder="Stock del producto" />
+				<input type="text" name="category" placeholder="Categoría" />
+			</div>
 			<div>¿Está activo?<input type="checkbox" name="status" /></div>
-			<input type="number" name="stock" placeholder="Stock del producto" />
-			<input type="text" name="category" placeholder="Categoría" />
 			<input type="file" name="thumbnail" placeholder="Imagen  del producto" />
 			</br>
 			<br>

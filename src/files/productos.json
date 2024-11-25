@@ -28,15 +28,5 @@
 		"status": false,
 		"stock": 0,
 		"category": "Cables"
-	},
-	{
-		"id": 4,
-		"title": "sdf",
-		"description": "sdf",
-		"code": "sdf",
-		"price": 25,
-		"status": true,
-		"stock": 11,
-		"category": "tecnologia"
 	}
 ]

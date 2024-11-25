@@ -11,15 +11,20 @@ socket.on("products-list", (data) => {
 	productsList.innerHTML = ""; // Limpia la lista
 
 	products.forEach((product) => {
-		const productItem = document.createElement("li");
+		const productItem = document.createElement("div");
+		productItem.classList.add("card");
 		productItem.innerHTML = `
-			Id: ${product.id} - Nombre: ${product.title}
-			${
-				product.thumbnail
-					? `<br><img src="${product.thumbnail}" alt="${product.title}" style="width:100px; height:auto;">`
-					: ""
-			}
-		`;
+  		<div class="card-body">
+    		<h5 class="card-title">${product.title}</h5>
+    		<p class="card-text">${product.description}</p>
+  		</div>
+  		<ul class="list-group list-group-flush">
+		<li class="list-group-item">Id: ${product.id}</li>
+    	<li class="list-group-item">Stock: ${product.stock}</li>
+    	<li class="list-group-item">Categoría: ${product.category}</li>
+    	<li class="list-group-item">Precio: ${product.price}</li>
+  		</ul>`;
+
 		productsList.appendChild(productItem);
 	});
 });
