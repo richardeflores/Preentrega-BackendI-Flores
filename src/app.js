@@ -8,10 +8,10 @@ import routerViewHome from "./routes/home.view.router.js";
 const app = express();
 const PORT = 8080;
 
-app.use("/api/public", express.static("./src/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 configHandlebars(app);
+app.use("/api/public", express.static("./src/public"));
 app.use("/api/products", routerProducts);
 app.use("/api/carts", routerCart);
 app.use("/", routerViewHome);

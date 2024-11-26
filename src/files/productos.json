@@ -7,7 +7,8 @@
 		"price": 12990,
 		"status": true,
 		"stock": 150,
-		"category": "Fundas"
+		"category": "Fundas",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 2,
@@ -17,7 +18,8 @@
 		"price": 24990,
 		"status": true,
 		"stock": 85,
-		"category": "Cargadores"
+		"category": "Cargadores",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 3,
@@ -27,7 +29,8 @@
 		"price": 7990,
 		"status": false,
 		"stock": 0,
-		"category": "Cables"
+		"category": "Cables",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 4,
@@ -37,7 +40,8 @@
 		"price": 19990,
 		"status": true,
 		"stock": 60,
-		"category": "Fundas"
+		"category": "Fundas",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 5,
@@ -47,7 +51,8 @@
 		"price": 10990,
 		"status": true,
 		"stock": 120,
-		"category": "Soportes"
+		"category": "Soportes",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 6,
@@ -57,7 +62,8 @@
 		"price": 34990,
 		"status": true,
 		"stock": 70,
-		"category": "Baterías"
+		"category": "Baterías",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 7,
@@ -67,7 +73,8 @@
 		"price": 5990,
 		"status": true,
 		"stock": 200,
-		"category": "Protectores"
+		"category": "Protectores",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 8,
@@ -77,7 +84,8 @@
 		"price": 54990,
 		"status": true,
 		"stock": 45,
-		"category": "Audífonos"
+		"category": "Audífonos",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 9,
@@ -87,7 +95,8 @@
 		"price": 28990,
 		"status": true,
 		"stock": 35,
-		"category": "Accesorios"
+		"category": "Accesorios",
+		"thumbnail": "ImagenUnavailable.jpg"
 	},
 	{
 		"id": 10,
@@ -97,6 +106,7 @@
 		"price": 19990,
 		"status": true,
 		"stock": 40,
-		"category": "Accesorios"
+		"category": "Accesorios",
+		"thumbnail": "ImagenUnavailable.jpg"
 	}
 ]

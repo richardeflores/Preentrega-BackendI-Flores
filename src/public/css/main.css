@@ -23,14 +23,16 @@ h1 {
 
 div#products-list {
 	display: flex;
-	flex-wrap: nowrap;
 	flex-direction: row;
 	align-content: center;
-	justify-content: center;
 	align-items: center;
 }
 
 .card {
-	width: 30%;
+	width: 18rem;
 	margin: 1rem;
+}
+
+.products {
+	display: flex;
 }

@@ -8,14 +8,14 @@
 		{{! Uso de nomenclatura BEM (B de bloque, E de elemento y M de modificador)}}
 		<div class="products">
 			<div class="products__list">
-				<div class="products__list__item" id="products-list"></div>
+				<div class="row" id="products-list"></div>
 			</div>
 		</div>
 	</section>
 
 	<section style="width: 100%">
 		<h3>Formulario de Productos</h3>
-		<form class="mb-3" id="products-form">
+		<form class="mb-3" id="products-form" enctype="multipart/form-data" method="POST" action="/api/products">
 			<div class="mb-3">			
 				<input type="text" name="title" placeholder="Nombre del producto" />
 			<input type="text" name="description" placeholder="Descripción" />

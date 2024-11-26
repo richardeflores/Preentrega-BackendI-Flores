@@ -11,16 +11,16 @@ export const config = (httpServer) => {
 			products: await productManager.getAll(),
 		});
 
-		socket.on("insert-product", async (data) => {
-			try {
-				await productManager.insertOne(data);
-				socketServer.emit("products-list", {
-					products: await productManager.getAll(),
-				});
-			} catch (error) {
-				socketServer.emit("error-message", { message: error.message });
-			}
-		});
+		// socket.on("insert-product", async (data) => {
+		// 	try {
+		// 		await productManager.insertOne(data);
+		// 		socketServer.emit("products-list", {
+		// 			products: await productManager.getAll(),
+		// 		});
+		// 	} catch (error) {
+		// 		socketServer.emit("error-message", { message: error.message });
+		// 	}
+		// });
 
 		socket.on("delete-product", async (data) => {
 			try {

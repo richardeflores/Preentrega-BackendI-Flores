@@ -7,57 +7,80 @@ const btnDeleteProduct = document.getElementById("btn-delete-product");
 const errorMessage = document.getElementById("error-message");
 
 socket.on("products-list", (data) => {
-	const products = data.products ?? [];
-	productsList.innerHTML = ""; // Limpia la lista
+	const products = data.products || {};
+	productsList.innerHTML = "";
 
 	products.forEach((product) => {
 		const productItem = document.createElement("div");
 		productItem.classList.add("card");
 		productItem.innerHTML = `
+  			<img class="card-img-top" src="/api/public/images/${product.thumbnail}" alt="Card image cap">
   		<div class="card-body">
     		<h5 class="card-title">${product.title}</h5>
     		<p class="card-text">${product.description}</p>
   		</div>
-  		<ul class="list-group list-group-flush">
+		<ul class="list-group list-group-flush">
 		<li class="list-group-item">Id: ${product.id}</li>
     	<li class="list-group-item">Stock: ${product.stock}</li>
     	<li class="list-group-item">Categoría: ${product.category}</li>
     	<li class="list-group-item">Precio: ${product.price}</li>
-  		</ul>`;
+		</ul>`;
 
 		productsList.appendChild(productItem);
 	});
 });
 
-productsForm.onsubmit = async (event) => {
+// productsForm.onsubmit = async (event) => {
+// 	event.preventDefault();
+// 	const form = event.target;
+// 	const formData = new FormData(form);
+// 	errorMessage.innerText = "";
+
+// 	form.reset();
+
+// 	socket.emit("insert-product", {
+// 		title: formData.get("title"),
+// 		description: formData.get("description"),
+// 		code: formData.get("code"),
+// 		price: formData.get("price"),
+// 		status: formData.get("status") || "off",
+// 		stock: formData.get("stock"),
+// 		category: formData.get("category"),
+// 		thumbnail: formData.get("thumbnail"),
+// 	});
+// };
+
+productsForm.addEventListener("submit", async (event) => {
 	event.preventDefault();
 	const form = event.target;
-	const formData = new FormData(form);
-	errorMessage.innerText = "";
+	const formdata = new FormData(form);
 
-	form.reset();
+	try {
+		const response = await fetch("/api/products", {
+			method: "POST",
+			body: formdata,
+		});
+		if (!response.ok) {
+			const error = await response.json();
+			console.log(`Error: ${error.message}`);
+			return;
+		}
+		console.log("Producto agregado con éxito.");
+		productsForm.reset();
+	} catch (error) {
+		console.error("Error al enviar el formulario:", error);
+	}
+});
 
-	socket.emit("insert-product", {
-		title: formData.get("title"),
-		description: formData.get("description"),
-		code: formData.get("code"),
-		price: formData.get("price"),
-		status: formData.get("status") || "off",
-		stock: formData.get("stock"),
-		category: formData.get("category"),
-		thumbnail: formData.get("thumbnail"),
-	});
-};
-
-btnDeleteProduct.onclick = () => {
-	const id = Number(inputProductId.value);
-	inputProductId.value = "";
+btnDeleteProduct.addEventListener("click", () => {
+	const id = inputProductId.value;
+	inputProductId.innerText = "";
 	errorMessage.innerText = "";
 
 	if (id > 0) {
 		socket.emit("delete-product", { id });
 	}
-};
+});
 
 socket.on("error-message", (data) => {
 	errorMessage.innerText = data.message;
