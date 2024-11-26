@@ -28,5 +28,75 @@
 		"status": false,
 		"stock": 0,
 		"category": "Cables"
+	},
+	{
+		"id": 4,
+		"title": "Funda de Cuero iPhone 14 Pro",
+		"description": "Funda de cuero premium con diseño elegante y protección completa para iPhone 14 Pro.",
+		"code": "FCIP14P",
+		"price": 19990,
+		"status": true,
+		"stock": 60,
+		"category": "Fundas"
+	},
+	{
+		"id": 5,
+		"title": "Soporte Magnético para Auto",
+		"description": "Soporte magnético universal para colocar tu dispositivo móvil en el auto de manera segura.",
+		"code": "SMA01",
+		"price": 10990,
+		"status": true,
+		"stock": 120,
+		"category": "Soportes"
+	},
+	{
+		"id": 6,
+		"title": "Batería Externa 10000mAh",
+		"description": "Batería externa compacta de 10000mAh, con carga rápida y múltiples puertos USB.",
+		"code": "BE10K",
+		"price": 34990,
+		"status": true,
+		"stock": 70,
+		"category": "Baterías"
+	},
+	{
+		"id": 7,
+		"title": "Protector de Pantalla iPhone 12/13",
+		"description": "Protector de pantalla de vidrio templado de alta resistencia para iPhone 12 y 13.",
+		"code": "PPIP1213",
+		"price": 5990,
+		"status": true,
+		"stock": 200,
+		"category": "Protectores"
+	},
+	{
+		"id": 8,
+		"title": "Audífonos Bluetooth Inalámbricos",
+		"description": "Audífonos inalámbricos Bluetooth con cancelación de ruido y batería de larga duración.",
+		"code": "ABI01",
+		"price": 54990,
+		"status": true,
+		"stock": 45,
+		"category": "Audífonos"
+	},
+	{
+		"id": 9,
+		"title": "Teclado Inalámbrico Bluetooth",
+		"description": "Teclado inalámbrico Bluetooth compacto y ergonómico, ideal para dispositivos móviles.",
+		"code": "TIB01",
+		"price": 28990,
+		"status": true,
+		"stock": 35,
+		"category": "Accesorios"
+	},
+	{
+		"id": 10,
+		"title": "Mouse Inalámbrico Recargable",
+		"description": "Mouse inalámbrico recargable con diseño ergonómico y alta precisión.",
+		"code": "MIR01",
+		"price": 19990,
+		"status": true,
+		"stock": 40,
+		"category": "Accesorios"
 	}
 ]
