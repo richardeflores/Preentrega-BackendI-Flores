@@ -33,6 +33,6 @@ div#products-list {
 	margin: 1rem;
 }
 
-.products {
+.products_realtime {
 	display: flex;
 }
