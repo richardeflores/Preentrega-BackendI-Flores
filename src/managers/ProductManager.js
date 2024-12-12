@@ -1,5 +1,5 @@
 import ErrorManager from "./ErrorManager.js";
-import isValidID from "../config/mongoose.config.js";
+import { isValidID } from "../config/mongoose.config.js";
 import ProductModel from "../models/product.model.js";
 import { convertToBoolean } from "../utils/converter.js";
 

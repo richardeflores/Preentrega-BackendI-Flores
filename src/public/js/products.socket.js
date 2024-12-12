@@ -7,7 +7,7 @@ const btnDeleteProduct = document.getElementById("btn-delete-product");
 const errorMessage = document.getElementById("error-message");
 
 socket.on("products-list", (data) => {
-	const products = data.products || {};
+	const products = data.products.docs ?? [];
 	productsList.innerHTML = "";
 
 	products.forEach((product) => {
@@ -72,15 +72,17 @@ productsForm.addEventListener("submit", async (event) => {
 	}
 });
 
-btnDeleteProduct.addEventListener("click", () => {
-	const id = inputProductId.value;
-	inputProductId.innerText = "";
+btnDeleteProduct.onclick = () => {
+	const id = inputProductId.value.trim();
+	inputProductId.value = "";
 	errorMessage.innerText = "";
 
-	if (id > 0) {
+	if (id) {
 		socket.emit("delete-product", { id });
+	} else {
+		errorMessage.innerText = "Por favor ingrese un ID de producto válido.";
 	}
-});
+};
 
 socket.on("error-message", (data) => {
 	errorMessage.innerText = data.message;
