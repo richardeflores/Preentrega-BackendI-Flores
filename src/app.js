@@ -1,4 +1,5 @@
 import express from "express";
+import dotenv from "dotenv";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 import { config as configWebsocket } from "./config/websocket.config.js";
 import { connectDB } from "./config/mongoose.config.js";
@@ -8,6 +9,7 @@ import routerCart from "./routes/cart.router.js";
 import routerViewHome from "./routes/home.view.router.js";
 
 const app = express();
+dotenv.config();
 connectDB();
 const PORT = 8080;
 
