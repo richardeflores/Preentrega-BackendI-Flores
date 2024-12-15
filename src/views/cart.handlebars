@@ -1,0 +1,40 @@
+<header class="container">
+	<h1>Carrito Individual</h1>
+</header>
+<main class="container">
+	<section>
+		<h3>Detalles</h3>
+		<ul>
+			<li>ID: <b>{{data._id}}</b></li>
+			<li>Creado: <i>{{data.createdAt}}hs</i></li>
+			<li>Actualizado: <i>{{data.updatedAt}}hs</i></li>
+		</ul>
+	</section>
+	<section>
+		<h3>Productos</h3>
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Cantidad</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each data.products}}
+						<tr>
+							<td>{{this.product._id}}</td>
+							<td>{{this.product.title}}</td>
+							<td>{{this.quantity}}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container-cart-table__buttons">
+			<a href="/productos"><button title="Volver al inicio">🏠</button></a>
+		</div>
+	</section>
+</main>

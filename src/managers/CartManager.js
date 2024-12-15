@@ -1,15 +1,16 @@
-import ErrorManager from "./ErrorManager.js";
 import mongoose from "mongoose";
 import mongoDB from "../config/mongoose.config.js";
 import CartModel from "../models/cart.model.js";
+import ErrorManager from "./ErrorManager.js";
 
-export default class cartManager {
+export default class CartManager {
 	#cartModel;
 
 	constructor() {
 		this.#cartModel = CartModel;
 	}
 
+	// Obtiene todos los carritos con opciones de paginación y populate
 	getAll = async (params) => {
 		try {
 			const sort = {
@@ -18,10 +19,10 @@ export default class cartManager {
 			};
 
 			const paginationOptions = {
-				limit: params?.limit ?? 6,
+				limit: params?.limit ?? 4,
 				page: params?.page ?? 1,
 				sort: sort[params?.sort] ?? {},
-				populate: "carts.cart",
+				populate: "products.product",
 				lean: true,
 			};
 
@@ -33,6 +34,7 @@ export default class cartManager {
 		}
 	};
 
+	// Obtiene un carrito específico por su ID
 	getOneById = async (id) => {
 		try {
 			if (!mongoDB.isValidID(id)) {
@@ -41,7 +43,7 @@ export default class cartManager {
 
 			const cartFound = await this.#cartModel
 				.findById(id)
-				.populate("carts.cart")
+				.populate("products.product")
 				.lean();
 			if (!cartFound) {
 				throw new ErrorManager("ID no encontrado", 404);
@@ -52,11 +54,11 @@ export default class cartManager {
 		}
 	};
 
+	// Crea un nuevo carrito
 	insertOne = async (data) => {
 		try {
 			const cartCreated = new CartModel(data);
 			await cartCreated.save();
-
 			return cartCreated;
 		} catch (error) {
 			if (error instanceof mongoose.Error.ValidationError) {
@@ -66,6 +68,7 @@ export default class cartManager {
 		}
 	};
 
+	// Actualiza un carrito por su ID
 	updateOneById = async (id, data) => {
 		try {
 			if (!mongoDB.isValidID(id)) {
@@ -89,6 +92,7 @@ export default class cartManager {
 		}
 	};
 
+	// Elimina un carrito por su ID
 	deleteOneById = async (id) => {
 		try {
 			if (!mongoDB.isValidID(id)) {
@@ -108,6 +112,7 @@ export default class cartManager {
 		}
 	};
 
+	// Agrega un producto a un carrito
 	addProductToCart = async (cartId, productId, quantity) => {
 		try {
 			if (!mongoDB.isValidID(cartId) || !mongoDB.isValidID(productId)) {
@@ -136,10 +141,11 @@ export default class cartManager {
 				error.message = Object.values(error.errors)[0];
 			}
 
-			throw new Error(error.message);
+			throw new ErrorManager(error.message);
 		}
 	};
 
+	// Elimina un producto de un carrito
 	deleteProductFromCart = async (id, productId, quantity) => {
 		try {
 			if (!mongoDB.isValidID(id) || !mongoDB.isValidID(productId)) {
@@ -176,6 +182,7 @@ export default class cartManager {
 		}
 	};
 
+	// Elimina todos los productos de un carrito
 	deleteAllProductsFromCart = async (id) => {
 		try {
 			if (!mongoDB.isValidID(id)) {

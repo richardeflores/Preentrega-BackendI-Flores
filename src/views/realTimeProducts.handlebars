@@ -1,8 +1,10 @@
 <header class="container">
-	<h1>INICIO - Productos en Tiempo Real</h1>
+	<h1>Productos en Tiempo Real</h1>
 </header>
 
-		<div class="formularioSuperior">
+
+<main>
+	<div class="formularioSuperior">
 	<section >
 		<h3>Formulario de Productos</h3>
 		<form class="mb-3" id="products-form" enctype="multipart/form-data" method="POST" action="/api/products">
@@ -11,15 +13,14 @@
 			<input type="text" name="description" placeholder="Descripción" />
 			</div>
 			<div class="mb-3">
-				<input type="text" name="code" placeholder="Código" />
+				<input type="text" name="category" placeholder="Categoría" />
 				<input type="number" name="price" placeholder="Precio" />
 			</div>
 			<div class="md-3">
 				<input type="number" name="stock" placeholder="Stock del producto" />
-				<input type="text" name="category" placeholder="Categoría" />
 			</div>
 			<div>¿Está disponible?<input type="checkbox" name="availability" /></div>
-			<input type="file" name="thumbnail" placeholder="Imagen  del producto"  class="btn btn-primary"/>
+			<input type="file" name="file" placeholder="Imagen  del producto"  class="btn btn-primary"accept=".png,.jpg"/>
 			</br>
 			<br>
 
@@ -52,61 +53,15 @@
 		</div>
 	</section>
 	</div>
-
-
-<main class="container">
-	<div class="contenedor-sup">
-	<section style="width: 100%">
-		<h3>Formulario de Productos</h3>
-		<form class="mb-3" id="products-form" enctype="multipart/form-data" method="POST" action="/api/products">
-			<div class="mb-3">			
-				<input type="text" name="title" placeholder="Nombre del producto" />
-			<input type="text" name="description" placeholder="Descripción" />
-			</div>
-			<div class="mb-3">
-				<input type="text" name="code" placeholder="Código" />
-				<input type="number" name="price" placeholder="Precio" />
-			</div>
-			<div class="md-3">
-				<input type="number" name="stock" placeholder="Stock del producto" />
-				<input type="text" name="category" placeholder="Categoría" />
-			</div>
-			<div>¿Está disponible?<input type="checkbox" name="availability" /></div>
-			<input type="file" name="thumbnail" placeholder="Imagen  del producto" />
-			</br>
-			<br>
-
-			<input type="submit" value="Guardar" />
-		</form>
-	</section>
-
-	<section>
-		<h3>Eliminación de Productos</h3>
-		<div class="products__delete">
-			<input
-				type="text"
-				class="products__delete__input"
-				id="input-product-id"
-				placeholder="ID del Producto"
-			/>
-			<button id="btn-delete-product">Eliminar</button>
-		</div>
-	</section>
-
-	<p class="error-message" id="error-message"></p>
-	</div>
-	<section>
+		<section class="carrito">
 		<h3>Productos</h3>
-		{{! Uso de nomenclatura BEM (B de bloque, E de elemento y M de modificador)}}
-		<div class="products_realtime">
-			<div class="products__list">
-				<div class="row" id="products-list"></div>
+			<div class="container">
+				<div class="row" id="products-container"></div>
 			</div>
-		</div>
 	</section>
 </main>
 
 
-{{! El script de socket.io debe estar antes que home.js }}
+
 <script src="/socket.io/socket.io.js"></script>
-<script src="/api/public/js/products.socket.js"></script>
+<script src="/public/js/products.socket.js"></script>

@@ -3,9 +3,9 @@ import ProductManager from "../../managers/ProductManager.js";
 
 const router = Router();
 const productManager = new ProductManager();
-const currentCartId = "675d9f0c8b60ee7311550c4c";
+const currentCartId = "675ef851c501ecd896fc40de";
 
-router.get("/products", async (req, res) => {
+router.get("/productos", async (req, res) => {
 	try {
 		const data = await productManager.getAll(req.query);
 		data.sort = req.query?.sort ? `&sort=${req.query.sort}` : "";

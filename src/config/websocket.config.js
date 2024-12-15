@@ -8,7 +8,7 @@ const productManager = new ProductManager();
 const fileHandler = new FileHandler();
 let socketServer = null;
 
-export const config = (httpServer) => {
+const config = (httpServer) => {
 	const socketServer = new Server(httpServer, {
 		maxHttpBufferSize: 5e6,
 	});

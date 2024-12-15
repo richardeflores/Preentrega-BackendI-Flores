@@ -6,7 +6,7 @@ import ErrorManager from "../../managers/ErrorManager.js";
 const router = Router();
 const cartManager = new CartManager();
 
-router.get(":id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 	try {
 		const data = await cartManager.getOneById(req.params.id);
 		data.createdAt = moment(data.createdAt).format("DD/MM/YYYY HH:mm:ss");

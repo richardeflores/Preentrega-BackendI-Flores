@@ -1,0 +1,41 @@
+<header>
+	<h1>Producto</h1>
+</header>
+
+<main class="container">
+	<div class="card" style="width: 100%;">
+					<img
+						src="../../../public/images/{{data.thumbnail}}"
+						class="card-img-top"
+						alt="..."
+						style="max-width: 200px;"
+					/>
+					<div class="card-body">
+						<h5 class="card-title">{{data.title}}</h5>
+						<p class="card-text">id: {{data._id}}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Category: {{data.category}}</li>
+						<li class="list-group-item">Stock: {{data.stock}}</li>
+						<li class="list-group-item">Availability:{{#if data.availability}}SI{{else}}NO{{/if}}</li>
+						<li class="list-group-item">Price:
+							<strong>$ {{data.price}}</strong></li>
+					</ul>
+				</div>
+
+			<div class="container-ingredient-details__buttons" style="text-align: center;">
+				<button
+					onclick="addProduct('{{data.currentCartId}}', '{{data._id}}')"
+					title="Agregar en el carro"
+				>✅</button>
+				<button
+					onclick="removeProduct('{{data.currentCartId}}', '{{data._id}}')"
+					title="Quitar del carrito"
+				>❎</button>
+				<a href="/productos"><button title="Volver al inicio">🏠</button></a>
+			</div>
+		</section>
+	</div>
+</main>
+
+<script src="/public/js/products.js"></script>

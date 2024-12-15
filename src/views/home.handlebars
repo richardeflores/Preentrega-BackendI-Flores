@@ -22,23 +22,23 @@
 		<div class="container-products-table__pagination">
 			<div>
 				{{#if data.prevPage}}
-					<a href="/products?page={{data.prevPage}}{{data.sort}}"><button
+					<a href="/productos?page={{data.prevPage}}{{data.sort}}"><button
 						>Anterior</button></a>
 				{{/if}}
 
 				{{#if data.hasNextPage}}
-					<a href="/products?page={{data.nextPage}}{{data.sort}}"><button
+					<a href="/productos?page={{data.nextPage}}{{data.sort}}"><button
 							class="btn btn-primary"
 						>Siguiente</button></a>
 				{{/if}}
 
-				<a href="/products?page={{data.page}}&sort=asc"><button
+				<a href="/productos?page={{data.page}}&sort=asc"><button
 						class="btn btn-outline-primary"
 					>⬇</button></a>
-				<a href="/products?page={{data.page}}&sort=desc"><button
+				<a href="/productos?page={{data.page}}&sort=desc"><button
 						class="btn btn-outline-primary"
 					>⬆</button></a>
-				<a href="/products?page={{data.page}}"><button
+				<a href="/productos?page={{data.page}}"><button
 						class="btn btn-outline-primary"
 					>⬌</button></a>
 			</div>
@@ -70,7 +70,7 @@
 					</ul>
 					<div class="card-body">
 						<a
-							href="/producs/{{this.id}}/cart/{{this.currentCartId}}"
+							href="/products/{{this.id}}/cart/{{this.currentCartId}}"
 							class="card-link"
 						>Ver más...</a>
 						<button

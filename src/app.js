@@ -2,7 +2,7 @@ import express from "express";
 import path from "./utils/paths.js";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
-import { config as configWebsocket } from "./config/websocket.config.js";
+import configWebsocket from "./config/websocket.config.js";
 import routerViewHome from "./routes/app/home.router.js";
 import routerProducts from "./routes/app/products.router.js";
 import routerCart from "./routes/app/carts.router.js";
@@ -32,4 +32,4 @@ const httpServer = app.listen(PORT, () => {
 	console.log(`Ejecutándose en http://localhost:${PORT}`);
 });
 
-configWebsocket(httpServer);
+configWebsocket.config(httpServer);

@@ -15,15 +15,18 @@ export default class ProductManager {
 		this.#fileHandler = new FileHandler();
 	}
 
-	getAll = async (params) => {
+	getAll = async (paramFilters) => {
 		try {
 			const $and = [];
 
-			if (params?.title)
-				$and.push({ title: { $regex: params.title, $options: "i" } });
-			if (params?.category) $and.push({ category: paramFilters.category });
-			if (params?.availability)
-				$and.push({ availability: convertToBoolean(params.availability) });
+			if (paramFilters?.title)
+				$and.push({ title: { $regex: paramFilters.title, $options: "i" } });
+			if (paramFilters?.category)
+				$and.push({ category: paramFilters.category });
+			if (paramFilters?.availability)
+				$and.push({
+					availability: convertToBoolean(paramFilters.availability),
+				});
 			const filters = $and.length > 0 ? { $and } : {};
 
 			const sort = {
@@ -32,9 +35,9 @@ export default class ProductManager {
 			};
 
 			const paginationOptions = {
-				limit: params?.limit ?? 4,
-				page: params?.page ?? 1,
-				sort: sort[params?.sort] ?? {},
+				limit: paramFilters?.limit ?? 4,
+				page: paramFilters?.page ?? 1,
+				sort: sort[paramFilters?.sort] ?? {},
 				lean: true,
 			};
 
