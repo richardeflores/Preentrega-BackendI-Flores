@@ -2,6 +2,58 @@
 	<h1>INICIO - Productos en Tiempo Real</h1>
 </header>
 
+		<div class="formularioSuperior">
+	<section >
+		<h3>Formulario de Productos</h3>
+		<form class="mb-3" id="products-form" enctype="multipart/form-data" method="POST" action="/api/products">
+			<div class="mb-3">			
+				<input type="text" name="title" placeholder="Nombre del producto" />
+			<input type="text" name="description" placeholder="Descripción" />
+			</div>
+			<div class="mb-3">
+				<input type="text" name="code" placeholder="Código" />
+				<input type="number" name="price" placeholder="Precio" />
+			</div>
+			<div class="md-3">
+				<input type="number" name="stock" placeholder="Stock del producto" />
+				<input type="text" name="category" placeholder="Categoría" />
+			</div>
+			<div>¿Está disponible?<input type="checkbox" name="availability" /></div>
+			<input type="file" name="thumbnail" placeholder="Imagen  del producto"  class="btn btn-primary"/>
+			</br>
+			<br>
+
+			<input  class="btn btn-primary" type="submit" value="Guardar" />
+		</form>
+	</section>
+
+	<section>
+		<h3>Eliminación de Productos</h3>
+		<div class="products__delete">
+			<input
+				type="text"
+				class="products__delete__input"
+				id="input-product-id"
+				placeholder="ID del Producto"
+			/>
+			<button id="btn-delete-product" class="btn btn-danger">Eliminar</button>
+		</div>
+	</section>
+	<section>
+		<h3>Carrito</h3>
+		<div>
+			<a
+				href="/carts/{{data.currentCartId}}"
+				title="Ver detalles del carrito..."
+			><span>🛒</span></a>
+			<button
+				onclick="removeAllProducts('{{data.currentCartId}}')"
+			>🗑️</button>
+		</div>
+	</section>
+	</div>
+
+
 <main class="container">
 	<div class="contenedor-sup">
 	<section style="width: 100%">

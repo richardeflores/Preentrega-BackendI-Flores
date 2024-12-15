@@ -32,7 +32,7 @@ export default class ProductManager {
 			};
 
 			const paginationOptions = {
-				limit: params?.limit ?? 6,
+				limit: params?.limit ?? 4,
 				page: params?.page ?? 1,
 				sort: sort[params?.sort] ?? {},
 				lean: true,

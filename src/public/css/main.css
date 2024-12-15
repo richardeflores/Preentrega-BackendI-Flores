@@ -45,3 +45,12 @@ h1 {
 	align-items: flex-start;
 	justify-content: space-around;
 }
+
+.catalogo {
+	display: ruby;
+}
+
+.container-products-table__pagination,
+.carrito {
+	text-align: center;
+}
