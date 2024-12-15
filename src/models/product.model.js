@@ -16,15 +16,15 @@ const productSchema = new Schema(
 			type: String,
 			required: [true, "La Categoría es obligatoria"],
 			uppercase: true,
+			maxLength: [250, "La descripción debe tener como máximo 250 caracteres"],
 		},
 		category: {
 			type: String,
 			required: [true, "La Categoría es obligatoria"],
 			uppercase: true,
-		},
-		status: {
-			type: Boolean,
-			required: [true, "El estado es obligatorio"],
+			trim: true,
+			minLength: [3, "La categoría debe tener al menos 3 caracteres"],
+			maxLength: [10, "La categoría debe tener como máximo 10 caracteres"],
 		},
 		stock: {
 			type: Number,
@@ -36,10 +36,16 @@ const productSchema = new Schema(
 			required: [true, "El stock es obligatorio"],
 			min: [0, "El stock debe ser un valor positivo"],
 		},
+		availability: {
+			type: Boolean,
+			required: [true, "La disponibilidad es obligatoria"],
+		},
 		thumbnail: {
 			type: String,
 			trim: true,
 		},
+		createdAt: { type: Date, default: Date.now },
+		updatedAt: { type: Date, default: Date.now },
 	},
 	{
 		timestamps: true,
@@ -48,9 +54,20 @@ const productSchema = new Schema(
 );
 
 productSchema.pre("save", function (next) {
-	if (!this.thumbnail || this.thumbnail.trim() === "") {
+	if (!this.thumbnail) {
 		this.thumbnail = "ImagenUnavailable.jpg";
 	}
+	next();
+});
+
+productSchema.pre("findByIdAndDelete", async function (next) {
+	const CartModel = this.model("carts");
+
+	await CartModel.updateMany(
+		{ "products.product": this._id },
+		{ $pull: { products: { product: this._id } } }
+	);
+
 	next();
 });
 

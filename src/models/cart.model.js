@@ -3,21 +3,21 @@ import paginate from "mongoose-paginate-v2";
 
 const cartSchema = new Schema(
 	{
-		carts: [
+		products: [
 			{
-				cart: {
+				product: {
 					type: Schema.Types.ObjectId,
-					ref: "carts",
-					required: [true, "El nombre del producto es obligatorio"],
+					ref: "products",
 				},
 				quantity: {
 					type: Number,
-					required: [true, "La cantidad del producto es obligatoria"],
-					min: [1, "La cantidad debe ser mayor que 0"],
+					required: true,
+					min: [1, "La cantidad debe ser un valor positivo"],
 				},
-				_id: false,
 			},
 		],
+		createdAt: { type: Date, default: Date.now },
+		updatedAt: { type: Date, default: Date.now },
 	},
 	{
 		timestamps: true,

@@ -1,9 +1,11 @@
 import { connect, Types } from "mongoose";
+import { MONGO_URI } from "./config.js";
 
 export const connectDB = async () => {
-	const URL = process.env.MONGO_URI;
+	const URI = MONGO_URI;
+
 	try {
-		await connect(URL);
+		await connect(URI);
 		console.log("Conectado con Base de Datos MongoDB ");
 	} catch (error) {
 		console.error(
@@ -15,4 +17,9 @@ export const connectDB = async () => {
 
 export const isValidID = (id) => {
 	return Types.ObjectId.isValid(id);
+};
+
+export default {
+	connectDB,
+	isValidID,
 };

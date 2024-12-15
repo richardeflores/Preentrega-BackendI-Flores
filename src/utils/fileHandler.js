@@ -1,57 +1,37 @@
 import fs from "fs";
 import path from "path";
 
-// Valida la ruta y nombre de un archivo
-const validateFilePathAndName = (filepath, filename) => {
-	if (!filepath)
-		throw new Error(`La ruta del archivo ${filename} no fue proporcionada.`);
-	if (!filename)
-		throw new Error(`El nombre del archivo ${filename} no fue proporcionado.`);
-};
+export default class FileSystem {
+	read = async (filepath, filename) => {
+		if (!filepath)
+			throw new Error("Lectura. No has enviado la ruta del archivo");
+		if (!filename)
+			throw new Error("Lectura. No has enviado el nombre del archivo");
 
-// Lee el contenido de un archivo
-export const readJsonFile = async (filepath, filename) => {
-	validateFilePathAndName(filepath, filename);
+		const content = await fs.promises.readFile(path.join(filepath, filename));
+		return content;
+	};
 
-	try {
-		const content = await fs.promises.readFile(
-			path.join(filepath, filename),
-			"utf8"
-		);
-		return JSON.parse(content || "[]");
-	} catch (error) {
-		throw new Error(`Error al leer el archivo ${filename}`);
-	}
-};
+	write = async (filepath, filename, content) => {
+		if (!filepath)
+			throw new Error("Escritura. No has enviado la ruta del archivo");
+		if (!filename)
+			throw new Error("Escritura. No has enviado el nombre del archivo");
+		if (!content) throw new Error("Escritura. No has enviado contenido");
 
-// Escribe contenido en un archivo
-export const writeJsonFile = async (filepath, filename, content) => {
-	validateFilePathAndName(filepath, filename);
+		return await fs.promises.writeFile(path.join(filepath, filename), content);
+	};
 
-	if (!content) throw new Error("El contenido no fue proporcionado.");
+	delete = async (filepath, filename) => {
+		if (!filepath)
+			throw new Error("Eliminación. No has enviado la ruta del archivo");
+		if (!filename)
+			throw new Error("Eliminación. No has enviado el nombre del archivo");
 
-	try {
-		await fs.promises.writeFile(
-			path.join(filepath, filename),
-			JSON.stringify(content, null, "\t"),
-			"utf8"
-		);
-	} catch (error) {
-		throw new Error(`Error al escribir en el archivo ${filename}`);
-	}
-};
-
-// Elimina un archivo
-export const deleteFile = async (filepath, filename) => {
-	validateFilePathAndName(filepath, filename);
-
-	try {
-		await fs.promises.unlink(path.join(filepath, filename));
-	} catch (error) {
-		if (error.code === "ENOENT") {
-			console.warn(`El archivo ${filename} no existe.`);
-		} else {
-			throw new Error(`Error al eliminar el archivo ${filename}`);
+		try {
+			return await fs.promises.unlink(path.join(filepath, filename));
+		} catch (error) {
+			console.log("Eliminación. No existe el archivo");
 		}
-	}
-};
+	};
+}

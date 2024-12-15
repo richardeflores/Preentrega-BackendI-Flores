@@ -1,5 +1,5 @@
 <header class="container">
-	<h1>INICIO - Productos en Tiempo Real</h1>
+	<h1>Carritos en Tiempo Real</h1>
 </header>
 
 <main class="container">
@@ -19,7 +19,7 @@
 				<input type="number" name="stock" placeholder="Stock del producto" />
 				<input type="text" name="category" placeholder="Categoría" />
 			</div>
-			<div>¿Está disponible?<input type="checkbox" name="availability" /></div>
+			<div>¿Está activo?<input type="checkbox" name="status" /></div>
 			<input type="file" name="thumbnail" placeholder="Imagen  del producto" />
 			</br>
 			<br>
@@ -53,7 +53,6 @@
 		</div>
 	</section>
 </main>
-
 
 {{! El script de socket.io debe estar antes que home.js }}
 <script src="/socket.io/socket.io.js"></script>

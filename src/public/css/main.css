@@ -4,6 +4,7 @@
 
 h1 {
 	color: #0059ff;
+	text-align: center;
 }
 
 .error404 {
@@ -21,12 +22,12 @@ h1 {
 	color: red;
 }
 
-div#products-list {
+/* div#products-list {
 	display: flex;
 	flex-direction: row;
 	align-content: center;
 	align-items: center;
-}
+} */
 
 .card {
 	width: 18rem;
@@ -35,4 +36,12 @@ div#products-list {
 
 .products_realtime {
 	display: flex;
+}
+
+.formularioSuperior {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-around;
 }

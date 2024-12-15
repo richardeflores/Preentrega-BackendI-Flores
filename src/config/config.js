@@ -1,8 +1,9 @@
-export const PORT = process.env.PORT || 3000;
+export const PORT = 8080;
 
-export const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/ProyectoFinal-BackEnd1-CoderHouse";
+export const MONGO_URI =
+	"mongodb+srv://lcdorichardflores:Prueba1234@cluster0.lp6jf.mongodb.net/backend1";
 
-export const dbConnectionType = process.env.MONGO_URL ? "Atlas" : "Local"
+export const dbConnectionType = process.env.MONGO_URI ? "Atlas" : "Local";
 
 export const SECRET_KEY = process.env.SECRET_KEY || 123;
 

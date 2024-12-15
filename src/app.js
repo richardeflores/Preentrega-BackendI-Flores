@@ -1,24 +1,29 @@
 import express from "express";
-import dotenv from "dotenv";
+import path from "./utils/paths.js";
+import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 import { config as configWebsocket } from "./config/websocket.config.js";
-import { connectDB } from "./config/mongoose.config.js";
-import routerProducts from "./routes/products.router.js";
-import routerCart from "./routes/cart.router.js";
-import routerViewHome from "./routes/home.view.router.js";
+import routerViewHome from "./routes/app/home.router.js";
+import routerProducts from "./routes/app/products.router.js";
+import routerCart from "./routes/app/carts.router.js";
+import routerApiProducts from "./routes/api/products.router.js";
+import routerApiCart from "./routes/api/cart.router.js";
+import { PORT } from "./config/config.js";
 
 const app = express();
-dotenv.config();
 connectDB();
-const PORT = 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-configHandlebars(app);
-app.use("/api/public", express.static("./src/public"));
-app.use("/api/products", routerProducts);
-app.use("/api/carts", routerCart);
 app.use("/", routerViewHome);
+app.use("/products", routerProducts);
+app.use("/carts", routerCart);
+app.use("/api/products", routerApiProducts);
+app.use("/api/carts", routerApiCart);
+app.use("/public", express.static(path.public));
+
+configHandlebars(app);
+
 app.use("*", (req, res) => {
 	res.status(404).render("error404", { title: "Error 404" });
 });

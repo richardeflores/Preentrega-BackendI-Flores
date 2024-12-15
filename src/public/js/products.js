@@ -1,23 +1,63 @@
-const productsList = document.getElementById("products-list");
-const btnRefreshProductsList = document.getElementById(
-	"btn-refresh-products-list"
-);
+const productsForm = document.getElementById("products-form");
+const inputProductId = document.getElementById("input-product-id");
+const btnDeleteProduct = document.getElementById("btn-delete-product");
 
-const loadProductsList = async () => {
-	const response = await fetch("/api/products", { method: "GET" });
-	const data = await response.json();
-	const products = data.payload.docs ?? [];
+const addProduct = async (cartId, currentCartId) => {
+	const options = {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ amount: 1 }),
+	};
 
-	productsList.innerText = "";
+	await fetch(`/api/carts/${cartId}/products/${currentCartId}`, options);
+};
 
-	products.forEach((product) => {
-		productsList.innerHTML += `<li>Id: ${product.id} - Nombre: ${product.title}</li>`;
+const removeProduct = async (cartId, currentCartId) => {
+	await fetch(`/api/carts/${cartId}/products/${currentCartId}`, {
+		method: "DELETE",
 	});
 };
 
-btnRefreshProductsList.addEventListener("click", () => {
-	loadProductsList();
-	console.log("¡Lista recargada!");
-});
+const removeAllProducts = async (cartId) => {
+	await fetch(`/api/carts/${cartId}/products`, {
+		method: "DELETE",
+	});
+};
 
-loadProductsList();
+const createProduct = async (data) => {
+	await fetch("/api/products", {
+		method: "POST",
+		body: data,
+	});
+
+	window.location.reload();
+};
+
+const deleteProduct = async (id) => {
+	await fetch(`/api/products/${id}`, { method: "DELETE" });
+	window.location.reload();
+};
+
+if (productsForm) {
+	productsForm.onsubmit = (event) => {
+		event.preventDefault();
+
+		const form = event.target;
+		const formData = new FormData(form);
+
+		form.reset();
+
+		createProduct(formData);
+	};
+}
+
+if (btnDeleteProduct) {
+	btnDeleteProduct.onclick = () => {
+		const id = inputProductId.value;
+		inputProductId.value = "";
+
+		if (id) {
+			deleteProduct(id);
+		}
+	};
+}

@@ -1,19 +1,155 @@
-<header class="container">
-	<h1>Bienvenido a la tienda</h1>
+<header>
+	<h1>Productos</h1>
 </header>
 
 <main class="container">
-	<section>
-		<h3>Productos</h3>
-		{{! Uso de nomenclatura BEM (B de bloque, E de elemento y M de modificador)}}
-		<div class="products">
-			<div class="products_list">
-				<ul class="products_list_item" id="products-list"></ul>
+
+		<div class="formularioSuperior">
+	<section >
+		<h3>Formulario de Productos</h3>
+		<form class="mb-3" id="products-form" enctype="multipart/form-data" method="POST" action="/api/products">
+			<div class="mb-3">			
+				<input type="text" name="title" placeholder="Nombre del producto" />
+			<input type="text" name="description" placeholder="Descripción" />
 			</div>
-			<button id="btn-refresh-products-list" class="btn btn-primary">Recargar
-				Lista</button>
+			<div class="mb-3">
+				<input type="text" name="code" placeholder="Código" />
+				<input type="number" name="price" placeholder="Precio" />
+			</div>
+			<div class="md-3">
+				<input type="number" name="stock" placeholder="Stock del producto" />
+				<input type="text" name="category" placeholder="Categoría" />
+			</div>
+			<div>¿Está disponible?<input type="checkbox" name="availability" /></div>
+			<input type="file" name="thumbnail" placeholder="Imagen  del producto" />
+			</br>
+			<br>
+
+			<input type="submit" value="Guardar" />
+		</form>
+	</section>
+
+	<section>
+		<h3>Eliminación de Productos</h3>
+		<div class="products__delete">
+			<input
+				type="text"
+				class="products__delete__input"
+				id="input-product-id"
+				placeholder="ID del Producto"
+			/>
+			<button id="btn-delete-product">Eliminar</button>
+		</div>
+	</section>
+	</div>
+	<section class="container-ingredients-table">
+		<h3>Productos</h3>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Controles</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each data.docs}}
+						<tr>
+							<td>{{this.id}}</td>
+							<td>{{this.title}}</td>
+							<td>
+								<a
+									href="/ingredients/{{this.id}}/recipe/{{this.currentRecipeId}}"
+								><button title="Ver más...">👁</button></a>
+								<button
+									onclick="addIngredient('{{this.currentRecipeId}}', '{{this.id}}')"
+									title="Agregar en la receta"
+								>✅</button>
+								<button
+									onclick="removeIngredient('{{this.currentRecipeId}}', '{{this.id}}')"
+									title="Quitar de la receta"
+								>✖️</button>
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<div class="container-ingredients-table__pagination">
+				<div>
+					{{#if data.prevPage}}
+						<a href="/ingredients?page={{data.prevPage}}{{data.sort}}"><button
+							>Anterior</button></a>
+					{{/if}}
+
+					{{#if data.hasNextPage}}
+						<a href="/ingredients?page={{data.nextPage}}{{data.sort}}"><button
+							>Siguiente</button></a>
+					{{/if}}
+
+					<a href="/ingredients?page={{data.page}}&sort=asc"><button
+						>⬇</button></a>
+					<a href="/ingredients?page={{data.page}}&sort=desc"><button
+						>⬆</button></a>
+					<a href="/ingredients?page={{data.page}}"><button>⬌</button></a>
+				</div>
+
+				<span>Página
+					{{data.page}}
+					de
+					{{data.totalPages}}
+					({{data.totalDocs}}
+					documentos)</span>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h3>Formulario de Ingredientes</h3>
+		<form id="ingredients-form">
+			<input type="text" name="name" placeholder="Nombre del ingrediente" />
+			<textarea
+				name="description"
+				placeholder="Descripción del ingrediente"
+				rows="5"
+			></textarea>
+			<select name="category">
+				<option value="LIQUIDO">LIQUIDO</option>
+				<option value="SOLIDO">SOLIDO</option>
+			</select>
+			<span><input type="checkbox" name="availability" />Disponibilidad del
+				ingrediente</span>
+			<input type="file" name="file" accept=".png,.jpg" />
+
+			<input type="submit" value="Guardar" style="width: 100%" />
+		</form>
+	</section>
+
+	<section class="container-ingredient-delete">
+		<h3>Eliminación de Ingredientes</h3>
+		<div>
+			<input
+				type="text"
+				id="input-ingredient-id"
+				placeholder="ID del Ingrediente"
+			/>
+			<button id="btn-delete-ingredient">Eliminar</button>
+		</div>
+	</section>
+
+	<section class="container-recipe-link">
+		<h3>Receta</h3>
+		<div>
+			<a
+				href="/recipes/{{data.currentRecipeId}}"
+				title="Ver detalles de la receta..."
+			><span>📒</span></a>
+			<button
+				onclick="removeAllIngredients('{{data.currentRecipeId}}')"
+				title="Eliminar todos los ingredientes de la receta"
+			>⛔</button>
 		</div>
 	</section>
 </main>
 
-<script src="/api/public/js/products.js"></script>
+<script src="/public/js/ingredients_with_http.js"></script>

@@ -1,27 +1,23 @@
 import { Router } from "express";
-import ProductManager from "../managers/ProductManager.js";
-import uploader from "../utils/uploader.js";
+import ProductManager from "../../managers/ProductManager.js";
+import uploader from "../../utils/uploader.js";
 
 const router = Router();
 const productManager = new ProductManager();
 
-// Ruta Raiz Get
 router.get("/", async (req, res) => {
 	try {
-		const products = await productManager.getAll(req.query);
-		res.status(200).json({ status: "success", payload: products });
+		const productsFound = await productManager.getAll(req.query);
+		res.status(200).json({ status: true, payload: productsFound });
 	} catch (error) {
-		res
-			.status(error.code || 500)
-			.json({ status: "error", message: error.message });
+		res.status(500).json({ status: "error", message: error.message });
 	}
 });
 
-// Ruta Get /:pid
 router.get("/:id", async (req, res) => {
 	try {
 		const product = await productManager.getOneById(req.params.id);
-		res.status(200).json({ status: "success", payload: product });
+		res.status(200).json({ status: true, payload: product });
 	} catch (error) {
 		res
 			.status(error.code || 500)
@@ -29,11 +25,10 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
-// Ruta para crear un producto, permite la subida de imágenes
 router.post("/", uploader.single("thumbnail"), async (req, res) => {
 	try {
 		const product = await productManager.insertOne(req.body, req.file);
-		res.status(201).json({ status: "success", payload: product });
+		res.status(201).json({ status: true, payload: product });
 	} catch (error) {
 		res
 			.status(error.code || 500)
@@ -49,7 +44,7 @@ router.put("/:id", uploader.single("file"), async (req, res) => {
 			req.body,
 			req.file
 		);
-		res.status(200).json({ status: "success", payload: product });
+		res.status(200).json({ status: true, payload: product });
 	} catch (error) {
 		res
 			.status(error.code || 500)
@@ -61,7 +56,7 @@ router.put("/:id", uploader.single("file"), async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	try {
 		await productManager.deleteOneById(req.params.id);
-		res.status(200).json({ status: "success" });
+		res.status(200).json({ status: true });
 	} catch (error) {
 		res
 			.status(error.code || 500)
